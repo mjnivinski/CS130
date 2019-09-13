@@ -19,6 +19,9 @@ public class StackLinked<T> implements StackADT<T> {
     }
 
     public T pop() {
+        if (isEmpty()){
+            throw new RuntimeException("Cannot pop when stack is empty");
+        }
         T element = top.getElement();
         top = top.getNext();
         count--;
@@ -26,6 +29,9 @@ public class StackLinked<T> implements StackADT<T> {
     }
 
     public T peek() {
+        if (isEmpty()){
+            throw new RuntimeException("Cannot peek when stack is empty");
+        }
         T element = top.getElement();
         top = top.getNext();
         count--;
@@ -33,6 +39,9 @@ public class StackLinked<T> implements StackADT<T> {
     }
 
     public int size (){
+        if (isEmpty()){
+            throw new RuntimeException("Cannot get size when stack is empty");
+        }
         return count;
     }
 
@@ -41,6 +50,10 @@ public class StackLinked<T> implements StackADT<T> {
     }
 
     public String toString() {
+        if (isEmpty()){
+            throw new RuntimeException("Cannot toString when stack is empty");
+        }
+
         StringBuilder stringBuilder = new StringBuilder("[");
         SinglyNode<T> pt = top;
         while(pt!=null) {

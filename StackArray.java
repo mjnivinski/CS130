@@ -47,7 +47,7 @@ public class StackArray<T> implements StackADT<T> {
     @Override
     public T peek(){
         if (isEmpty()){
-            throw new RuntimeException("Cannot pop when stack is empty");
+            throw new RuntimeException("Cannot peek when stack is empty");
         }
         return this.stack[this.top-1];
     }
@@ -59,11 +59,17 @@ public class StackArray<T> implements StackADT<T> {
 
     @Override
     public int size(){
+        if (isEmpty()){
+            throw new RuntimeException("Cannot get size when stack is empty");
+        }
         return this.top;
     }
 
     @Override
     public String toString(){
+        if (isEmpty()){
+            throw new RuntimeException("Cannot toString when stack is empty");
+        }
         String elements = "[";
         for(int i=top-1; i>=0; i--){
             if(i!=0){
